@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #49193b;
+    color: white;
+    padding: 1px;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    background-color: #6a2c5f;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    position: relative;
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+}
+
+.dropdown {
+    display: none;
+    /* Hide dropdown by default */
+    position: absolute;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    white-space: nowrap;
+    /* Prevent line breaks */
+}
+
+.dropdown a {
+    color: #49193b;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline;
+    /* Items in a single line */
+}
+
+.dropdown a:hover {
+    background-color: #f4f4f4;
+}
+
+nav ul li:hover .dropdown {
+    display: block;
+    /* Show dropdown on hover */
+}
+
+.dropdown-container {
+    display: flex;
+    /* Use flex to arrange dropdown items in a single line */
+    flex-direction: column;
+    /* Stack items vertically */
+}
+
+.background {
+    background-image: url('../images/cat1.jpg');
+    /* Replace with your image path */
+    background-size: cover;
+    /* Cover the entire div */
+    background-position: center;
+    /* Center the image */
+    height: 500px;
+    /* Set a height for the background */
+    padding: 20px;
+    color: #020202;
+    /* Text color for better contrast */
+    text-align: center;
+}

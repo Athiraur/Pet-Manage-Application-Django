@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Add Customer{% endblock %}
+
+{% block content %}
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    table, th, td {
+        border: 1px solid #ccc;
+    }
+    th, td {
+        padding: 8px;
+        text-align: center;
+    }
+    button {
+        cursor: pointer;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 4px;
+        color: #fff;
+    }
+    .update-btn { background: #4CAF50; }
+    .delete-btn { background: #f44336; }
+</style>
+<style>
+    .action-buttons {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 8px;
+        font-size: 14px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        color: white;
+        font-weight: 500;
+    }
+
+    .btn-warning {
+        background-color: #f4a261;
+    }
+
+    .btn-warning:hover {
+        background-color: #e07b39;
+        transform: scale(1.05);
+    }
+
+    .btn-danger {
+        background-color: #e63946;
+    }
+
+    .btn-danger:hover {
+        background-color: #c1121f;
+        transform: scale(1.05);
+    }
+
+    /* Optional: spacing for inline form button */
+    form {
+        display: inline;
+        margin: 0;
+    }
+</style>
+
+</head>
+<body>
+
+<h2>Animal List</h2>
+<a href="{% url 'add_customer' %}">Add New Bird</a>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Pet ID</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Phone</th>
+            
+            <th>Address</th>
+            <th>Password</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for customer in customers %}
+        <tr>
+            <td>{{ customer.cust_id }}</td>
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.username }}</td>
+            <td>{{ customer.phone }}</td>
+            
+            <td>{{ customer.address }}</td>
+            
+            <td>{{ customer.password }}</td>
+            
+              <td class="action-buttons">
+    <a href="{% url 'edit_customer' customer.pk %}" class="btn btn-warning">Edit</a>
+
+    <form method="post" action="{% url 'delete_customer' customer.pk %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{%endblock%}

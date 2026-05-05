@@ -1,0 +1,179 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Add Bird{% endblock %}
+
+{% block content %}
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap');
+
+    /* Only style content area, not full body */
+    main {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 50px 0;
+        background: #F0E7D8;
+        font-family: 'Montserrat', sans-serif;
+        min-height: calc(100vh - 150px);
+    }
+
+    .signup-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 900px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        border-radius: 10px;
+        overflow: hidden;
+        background: #fff;
+    }
+
+    .left-container, .right-container {
+        padding: 15px;
+        text-align: left;
+    }
+
+    .left-container {
+        background: #B8A99A;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .left-container h1 {
+        color: #fff;
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .left-container img {
+        width: 70%;
+        border-radius: 10px;
+    }
+
+    .right-container {
+        background: #F7B1AB;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .right-container h1 {
+        color: rgba(0,0,0,.8);
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .set {
+        margin-bottom: 10px;
+        padding: 0 10px;
+    }
+
+    .set label {
+        margin-bottom: 3px;
+        font-weight: bold;
+        display: block;
+    }
+
+    .set input, .set select {
+        border: 1px solid rgba(0,0,0,.2);
+        border-radius: 4px;
+        height: 32px;
+        padding-left: 8px;
+        transition: border 0.3s;
+        width: 100%;
+    }
+
+    .set input:focus, .set select:focus {
+        border-color: #49193b;
+        outline: none;
+    }
+
+    footer, .submit-btn {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    button {
+        background: #807182;
+        border: none;
+        color: #fff;
+        height: 35px;
+        width: 120px;
+        border-radius: 20px;
+        font-family: 'Montserrat', sans-serif;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+        background: #5A4E5B;
+        transform: scale(1.05);
+    }
+
+    .messages {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .success { color: green; }
+    .error { color: red; }
+</style>
+
+<main>
+    <div class="signup-container">
+        <!-- Left side -->
+        <div class="left-container">
+            <h1><i class="fas fa-feather"></i> BIRD SHOP</h1>
+            <img src="{% static 'images/bird2.jpg' %}" alt="Bird">
+        </div>
+
+        <!-- Right side -->
+        <div class="right-container">
+            <header>
+                <h1>Add a New Bird</h1>
+            </header>
+
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="{% if message.tags == 'success' %}success{% else %}error{% endif %}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+
+            <form method="POST">
+                {% csrf_token %}
+                <div class="set bird-id">
+                    <label for="bird-id">Bird ID</label>
+                    {{ form.bird_id }}
+                </div>
+                <div class="set bird-category">
+                    <label for="bird-category">Category</label>
+                    {{ form.category }}
+                </div>
+                <div class="set bird-type">
+                    <label for="bird-type">Type</label>
+                    {{ form.type }}
+                </div>
+                <div class="set bird-noise">
+                    <label for="bird-noise">Noise Level</label>
+                    {{ form.noice_level }}
+                </div>
+                <div class="set bird-cost">
+                    <label for="bird-cost">Cost ($)</label>
+                    {{ form.cost }}
+                </div>
+
+                <div class="submit-btn">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}

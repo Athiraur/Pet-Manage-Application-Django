@@ -1,0 +1,282 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Appointment</title>
+
+    <style>
+        body {
+            background-color: #F0E7D8;
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #49193b;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            display: flex;
+            justify-content: right;
+            background-color: #6a2c5f;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+        }
+
+        nav ul li a:hover {
+            background-color: #49193b;
+            border-radius: 5px;
+        }
+
+        /* Form container */
+        .animal-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            max-width: 850px;
+            margin: 40px auto;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #fff;
+        }
+
+        /* Left Section */
+        .left-section {
+            background-color: #B8A99A;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .left-section h1 {
+            color: #fff;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .left-section img {
+            width: 80%;
+            max-width: 250px;
+            border-radius: 10px;
+            border: 3px solid #fff;
+        }
+
+        /* Right Section (Form) */
+        .right-section {
+            background-color: #F7B1AB;
+            padding: 25px;
+        }
+
+        .right-section h2 {
+            text-align: center;
+            color: #49193b;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        label {
+            font-weight: bold;
+            font-size: 14px;
+            display: block;
+            margin-bottom: 3px;
+            color: #333;
+        }
+
+        input, select {
+            width: 100%;
+            height: 30px;
+            padding: 5px;
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+            transition: border 0.3s;
+        }
+
+        input:focus, select:focus {
+            border-color: #49193b;
+            outline: none;
+        }
+
+        input[readonly] {
+            background-color: #f5f5f5;
+        }
+
+        .messages {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .success {
+            color: green;
+            font-size: 14px;
+        }
+
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+
+        .submit-btn {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        button {
+            background-color: #49193b;
+            color: white;
+            border: none;
+            padding: 8px 25px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+            font-size: 14px;
+        }
+
+        button:hover {
+            background-color: #6a2c5f;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .animal-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Add Appointment  </h1>
+    </header>
+
+    <!-- Navbar -->
+    <nav>
+        <ul>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'add_appoinment' %}">Pets Appointment</a></li>
+            <li><a href="{% url 'view_appoinment' %}">View Appointments</a></li>
+            <li><a href="{% url 'index' %}">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Form Section -->
+    <div class="animal-container">
+        <!-- Left Side -->
+        <div class="left-section">
+            <h1><i class="fas fa-paw"></i> PET SHOP</h1>
+            <img src="{% static 'images/dog.jpg' %}" alt="Animal Image">
+        </div>
+
+        <!-- Right Side -->
+        <div class="right-section">
+            <h2>Add a New Appointment</h2>
+
+            <div class="messages">
+                {% for message in messages %}
+                <div class="{% if message.tags == 'success' %}success{% else %}error{% endif %}">
+                    {{ message }}
+                </div>
+                {% endfor %}
+            </div>
+
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Appointment ID</label>
+                    {{ form.APT_id }}
+                </div>
+                <div class="form-group">
+                    <label>Pet Name</label>
+                    {{ form.pet_name }}
+                </div>
+                <div class="form-group">
+                    <label>Date</label>
+                    {{ form.date }}
+                </div>
+                <div class="form-group">
+                    <label>Time</label>
+                    {{ form.time }}
+                </div>
+                <div class="form-group">
+                    <label>Doctor</label>
+                    {{ form.doctor }}
+                </div>
+                <div class="form-group">
+                    <label>Hospital Name</label>
+                    {{ form.hospital_name }}
+                </div>
+                <div class="form-group">
+                    <label>Place</label>
+                    {{ form.place }}
+                </div>
+                <div class="form-group">
+                    <label>Other Query</label>
+                    {{ form.other_query }}
+                </div>
+
+                <div class="submit-btn">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const doctorSelect = document.getElementById('id_doctor');
+            const hospitalInput = document.getElementById('id_hospital_name');
+            const placeInput = document.getElementById('id_place');
+
+            doctorSelect.addEventListener('change', function () {
+                const doctorId = this.value;
+                if (doctorId) {
+                    fetch(`/get-doctor-details/${doctorId}/`)
+                        .then(response => response.json())
+                        .then(data => {
+                            hospitalInput.value = data.hospital || '';
+                            placeInput.value = data.place || '';
+                        })
+                        .catch(error => console.error('Error fetching doctor details:', error));
+                } else {
+                    hospitalInput.value = '';
+                    placeInput.value = '';
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

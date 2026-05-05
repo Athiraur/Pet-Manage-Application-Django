@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Add Animal{% endblock %}
+
+{% block content %}
+<style>
+    body {
+        background-color: #F0E7D8;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .animal-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        max-width: 850px;
+        margin: 50px auto;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        overflow: hidden;
+        background-color: #fff;
+    }
+
+    /* Left Section (Image) */
+    .left-section {
+        background-color: #B8A99A;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .left-section h1 {
+        color: #fff;
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    .left-section img {
+        width: 80%;
+        max-width: 250px;
+        border-radius: 10px;
+        border: 3px solid #fff;
+    }
+
+    /* Right Section (Form) */
+    .right-section {
+        background-color: #F7B1AB;
+        padding: 25px;
+    }
+
+    .right-section h2 {
+        text-align: center;
+        color: #49193b;
+        margin-bottom: 15px;
+        font-size: 22px;
+    }
+
+    .form-group {
+        margin-bottom: 10px;
+    }
+
+    label {
+        font-weight: bold;
+        font-size: 14px;
+        display: block;
+        margin-bottom: 3px;
+        color: #333;
+    }
+
+    input, select {
+        width: 100%;
+        height: 28px;
+        padding: 5px;
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        border-radius: 4px;
+        transition: border 0.3s;
+    }
+
+    input:focus {
+        border-color: #49193b;
+        outline: none;
+    }
+
+    .messages {
+        text-align: center;
+        margin-bottom: 8px;
+    }
+
+    .success {
+        color: green;
+        font-size: 14px;
+    }
+
+    .error {
+        color: red;
+        font-size: 14px;
+    }
+
+    .submit-btn {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    button {
+        background-color: #49193b;
+        color: white;
+        border: none;
+        padding: 8px 25px;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.2s;
+        font-size: 14px;
+    }
+
+    button:hover {
+        background-color: #6a2c5f;
+        transform: scale(1.05);
+    }
+
+    @media (max-width: 768px) {
+        .animal-container {
+            grid-template-columns: 1fr;
+        }
+        .left-section {
+            padding: 15px;
+        }
+    }
+</style>
+
+<div class="animal-container">
+    <!-- Left side (Image) -->
+    <div class="left-section">
+        <h1><i class="fas fa-paw"></i> PET SHOP</h1>
+        <img src="{% static 'images/dog.jpg' %}" alt="Animal Image">
+    </div>
+
+    <!-- Right side (Form) -->
+    <div class="right-section">
+        <h2>Add a New Animal</h2>
+
+        <div class="messages">
+            {% for message in messages %}
+                <div class="{% if message.tags == 'success' %}success{% else %}error{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Pet ID</label>
+                {{ form.pet_id }}
+            </div>
+            <div class="form-group">
+                <label>Category</label>
+                {{ form.category }}
+            </div>
+            <div class="form-group">
+                <label>Breed</label>
+                {{ form.breed }}
+            </div>
+            <div class="form-group">
+                <label>Weight (lbs)</label>
+                {{ form.weight }}
+            </div>
+            <div class="form-group">
+                <label>Height (inches)</label>
+                {{ form.height }}
+            </div>
+            <div class="form-group">
+                <label>Age (years)</label>
+                {{ form.age }}
+            </div>
+            <div class="form-group">
+                <label>Fur Type</label>
+                {{ form.fur_type }}
+            </div>
+            <div class="form-group">
+                <label>Cost ($)</label>
+                {{ form.cost }}
+            </div>
+
+            <div class="submit-btn">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

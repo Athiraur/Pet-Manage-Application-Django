@@ -1,0 +1,139 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Doctor Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap');
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #F0E7D8;
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+        }
+
+        .signup-container {
+            width: 30%;
+            /* Width of the form */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            background: #F7B1AB;
+            padding: 15px;
+        }
+
+        .signup-container h1 {
+            color: rgba(0, 0, 0, .8);
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .set {
+            margin-bottom: 8px;
+        }
+
+        .set label {
+            margin-bottom: 3px;
+            font-weight: bold;
+            display: block;
+        }
+
+        .set input {
+            border: 1px solid rgba(0, 0, 0, .2);
+            border-radius: 4px;
+            height: 28px;
+            padding-left: 8px;
+            transition: border 0.3s;
+            width: 100%;
+        }
+
+        .set input:focus {
+            border-color: #F7B1AB;
+            outline: none;
+        }
+
+        footer {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        footer button {
+            background: #807182;
+            border: none;
+            color: #fff;
+            height: 35px;
+            width: 100px;
+            border-radius: 20px;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        footer button:hover {
+            background: #5A4E5B;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="signup-container">
+        <header>
+            <h1>Add a New Doctor</h1>
+        </header>
+
+
+
+        <div class="messages">
+        {% for message in messages %}
+            <div class="{% if message.tags == 'success' %}success{% else %}error{% endif %}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Animal Form -->
+    <form method="POST">
+        {% csrf_token %}
+
+
+
+
+        <div class="set doctor-id">
+            <label for="doctor-id">Doctor ID</label>
+            {{form.doct_id}}
+        </div>
+        <div class="set doctor-name">
+            <label for="doctor-name">Doctor Name</label>
+           {{form.doct_name}}
+        </div>
+        <div class="set category">
+            <label for="category">Category</label>
+            {{form.category}}
+        </div>
+        <div class="set hospital">
+            <label for="hospital">Hospital</label>
+            {{form.hospital}}
+        </div>
+        <div class="set doctor-place">
+            <label for="doctor-place">Doctor Place</label>
+            {{form.place}}
+        </div>
+        <footer>
+            <button type="submit" id="submit">Submit</button>
+        </footer>
+    </div>
+</body>
+
+</html>

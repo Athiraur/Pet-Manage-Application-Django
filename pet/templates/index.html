@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Shop Management</title>
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <link rel="stylesheet" href="{% static 'pets/css/style.css' %}">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="{% url 'user_login' %}">User Login</a></li>
+                <li><a href="{% url 'admin_login' %}">Admin Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <h1>Welcome to Our Pet Shop</h1>
+            <p>Your one-stop shop for all your pet needs!</p>
+        </section>
+    </main>
+    <div id="banner"></div>
+
+    <footer>
+        <p>&copy; 2024 Pet Shop. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

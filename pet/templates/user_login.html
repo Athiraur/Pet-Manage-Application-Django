@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login - Pet Shop Management</title>
+    <link rel="stylesheet" href="{% static 'pets/css/adminform.css' %}">
+</head>
+<body>
+    <div class="login-container">
+        <h2>User Login</h2>
+
+        <!-- Display messages -->
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <form action="{% url 'user_login' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" placeholder="Username" name="username" required>
+            <input type="password" placeholder="Password" name="password" required>
+            <button type="submit">Login</button>
+        </form>
+
+        <div class="footer">
+            <p>&copy; 2024 Pet Shop Management</p>
+        </div>
+    </div>
+</body>
+</html>

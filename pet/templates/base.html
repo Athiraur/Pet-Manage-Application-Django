@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static '/css/admin.css' %}">
+</head>
+
+<body>
+
+    <header>
+        <h1 style="color: aliceblue;">Welcome to Pet Show</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="">Home</a></li>
+
+            <li>
+                <a href="#">Animals</a>
+                <div class="dropdown">
+                    <div class="dropdown-container">
+                        <a href="{% url 'add_animal' %}">Add new Animal</a>
+                        <a href="{% url 'animal_list' %}">View Animals</a>
+                    </div>
+                </div>
+            </li>
+
+            <li>
+                <a href="#">Birds</a>
+                <div class="dropdown">
+                    <div class="dropdown-container">
+                        <a href="{% url 'add_bird' %}">Add new Bird</a>
+                        <a href="{% url 'bird_list' %}">View Birds</a>
+                    </div>
+                </div>
+            </li>
+
+            <li>
+                <a href="#">Customers</a>
+                <div class="dropdown">
+                    <div class="dropdown-container">
+                        <a href="{% url 'add_customer' %}">Add new Customer</a>
+                        <a href="{% url 'customer_list' %}">View Customers</a>
+                    </div>
+                </div>
+            </li>
+
+            <li>
+                <a href="#">Doctors</a>
+                <div class="dropdown">
+                    <div class="dropdown-container">
+                        <a href="{% url 'add_doctor' %}">Add new Doctor</a>
+                        <a href="{% url 'doctor_list' %}">View Doctors</a>
+                    </div>
+                </div>
+            </li>
+
+            <li><a href="{% url 'admin_view_appoinments' %}">View Appointments</a></li>
+            <li><a href="{% url 'index' %}">Logout</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+</body>
+</html>

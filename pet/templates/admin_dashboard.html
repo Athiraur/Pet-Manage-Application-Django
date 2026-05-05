@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Dashboard</title>
+    <link rel="stylesheet" href="{% static '/css/admin.css' %}">
+
+
+
+    <style>
+
+
+              .dashboard-image {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .background {
+            text-align: center;
+            padding: 30px;
+        }
+    </style>
+    
+
+
+</head>
+
+<body>
+
+    <header>
+        <h1>Welcome to the Admin Dashboard</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li>
+                <a href="#">Animals</a>
+                <div class="dropdown">
+                    <div class="dropdown-container">
+                        <a href="{% url 'add_animal' %}">Add new Animal</a>
+                        <a href="{% url 'animal_list' %}">View Animals</a>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a href="#">Birds</a>
+                <div class="dropdown">
+                    <div class="dropdown-container">
+                        <a href="{% url 'add_bird' %}">Add new Bird</a>
+                        <a href="{% url 'bird_list' %}">View Birds</a>
+                    </div>
+                </div>
+            </li>
+
+              <li>
+                <a href="#">Customers</a>
+                <div class="dropdown">
+                    <div class="dropdown-container">
+                        <a href="{%url 'add_customer'%}">Add new Customer</a>
+                        <a href="{%url 'customer_list'%}">View Customers</a>
+                        
+                    </div>
+                </div>
+            </li>
+           
+          
+          
+            <li>
+                <a href="#">Doctors</a>
+                <div class="dropdown">
+                    <div class="dropdown-container">
+                        <a href="{%url 'add_doctor'%}">Add new Doctor</a>
+                        <a href="{%url 'doctor_list'%}">View Doctors</a>
+                    </div>
+                </div>
+            </li>
+            <li><a href="{% url 'admin_view_appoinments' %}">View Appointments</a></li> 
+            <li><a href="{% url 'index' %}">Logout</a></li>
+        </ul>
+    </nav>
+    <img src="{% static 'images/cat1.jpg' %}" alt="Dashboard Banner" class="dashboard-image">
+
+    <div class="background">
+
+        
+        <!-- <h2>Welcome to the Pet Shop Management System!</h2>
+        <p>Your one-stop solution for all your pet needs.</p> -->
+    </div>
+
+</body>
+
+</html>

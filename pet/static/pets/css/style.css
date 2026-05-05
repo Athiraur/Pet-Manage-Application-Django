@@ -1,0 +1,93 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: rgb(15, 14, 14);
+    /* Change text color for better contrast */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    /* Space between title and nav */
+    align-items: center;
+    /* Center items vertically */
+    background-color: #49193b;
+    /* Use an opaque background */
+    color: white;
+    padding: 20px 25px;
+    /* Reduced padding to keep the header compact */
+    position: relative;
+    /* Position relative for z-index to work */
+    z-index: 10;
+    /* Set a high z-index to ensure it stays above the background */
+}
+
+nav {
+    margin-left: auto;
+    /* Push the navigation to the right */
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+    /* Space between links */
+    font-size: 18PX;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 5px 10px;
+    /* Reduced padding for links to keep them compact */
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    /* Add a background on hover */
+}
+
+#banner {
+    background-image: url('../images/banner.jpeg'); /* Path to your background image */
+    background-size: cover; /* Ensure the image covers the entire area */
+    background-position: center; /* Center the image both horizontally and vertically */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    height: 600px; /* Fixed height of the banner */
+    width: 700px; /* Full width of the banner */
+    margin: 0px 322px; /* Adjust margin as needed */
+}
+
+main {
+    padding: 20px;
+    /* Top padding to avoid overlap with the header */
+    text-align: center;
+    /* Center the text */
+}
+
+main h1 {
+    margin: 0;
+    font-size: 50px;
+    color: #73a0db;               
+    /* Color for the main heading */
+}
+
+main p {
+    font-size: 25px;
+    color: darkolivegreen;
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: rgba(124, 106, 119, 0.8);
+    /* Semi-transparent background */
+    color: white;
+    margin-top: 15px;
+}

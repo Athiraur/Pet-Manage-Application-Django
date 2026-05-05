@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap');
+
+body {
+    align-items: center;
+    background: #F0E7D8; /* Soft background color */
+    color: rgba(0,0,0,.8);
+    display: flex;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    height: 100vh;
+    margin: 0;
+}
+
+.signup-container {
+    display: grid;
+    grid-template-columns: 300px 1fr; /* Fixed width for left, flexible for right */
+    max-width: 900px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.left-container {
+    background: #B8A99A; /* Updated color */
+    padding: 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.left-container h1 {
+    color: #fff; /* White text for contrast */
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.left-container img {
+    width: 70%;
+    border-radius: 10px;
+}
+
+.right-container {
+    background: #F7B1AB; /* Soft pink background */
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.right-container h1 {
+    color: rgba(0,0,0,.8);
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.set {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column; /* Align label and input vertically */
+}
+
+.set label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-align: left; /* Align label text to the left */
+}
+
+.set input {
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 4px;
+    height: 38px;
+    padding-left: 10px;
+    transition: border 0.3s;
+}
+
+.set input:focus {
+    border-color: #F7B1AB; /* Highlight on focus */
+    outline: none;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+footer button {
+    background: #807182; /* Button color */
+    border: none;
+    color: #fff;
+    height: 40px;
+    width: 100px;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+footer button:hover {
+    background: #5A4E5B; /* Darker shade on hover */
+    transform: scale(1.05); /* Slight grow effect */
+}

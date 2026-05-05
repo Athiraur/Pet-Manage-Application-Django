@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Add Animal{% endblock %}
+
+{% block content %}
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap');
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #F0E7D8;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header */
+        header {
+            background-color: #49193b;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: right;
+            background-color: #6a2c5f;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+            font-weight: 500;
+        }
+
+        nav ul li a:hover {
+            background-color: #49193b;
+            border-radius: 5px;
+        }
+
+        /* Container */
+        .container {
+            margin: 40px auto;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 1000px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #49193b;
+            margin-bottom: 25px;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 15px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border-bottom: 1px solid #ececec;
+        }
+
+        th {
+            background-color: #eec6e6;
+            color: #49193b;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: #f9f2f6;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+
+        /* Responsive Styling */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            table {
+                font-size: 13px;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    
+
+    <!-- Header -->
+   
+
+    <!-- Navbar -->
+  
+
+    <!-- Table Section -->
+    <div class="container">
+       
+        <table>
+            <thead>
+                <tr>
+                    <th>Pet Name</th>
+                    <th>Appointment Date</th>
+                    <th>Appointment Time</th>
+                    <th>Appointment Doctor</th>
+                    <th>Appointment Hospital</th>
+                    <th>Appointment Place</th>
+                    <th>Appointment Query</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for view in views %}
+                <tr>
+                    <td>{{ view.pet_name }}</td>
+                    <td>{{ view.date }}</td>
+                    <td>{{ view.time }}</td>
+                    <td>{{ view.doctor }}</td>
+                    <td>{{ view.hospital_name }}</td>
+                    <td>{{ view.place }}</td>
+                    <td>{{ view.other_query }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7">No appointments found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
+
